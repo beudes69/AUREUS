@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aureus"
+version = "0.1.0"
+description = "AUREUS - bot de trading Freqtrade sur OKX perpetual futures"
+requires-python = ">=3.11"
+# Le package metier (etape 1) n'utilise que la stdlib : la frontiere Decimal,
+# la persistence et les diagnostics ne dependent ni de Freqtrade ni de pandas.
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "hypothesis>=6.100",
+    "ruff>=0.6",
+]
+freqtrade = [
+    "freqtrade>=2024.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["user_data/strategies"]
+include = ["aureus*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+extend-exclude = [".venv", "user_data/data", "user_data/logs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]

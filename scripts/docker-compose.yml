@@ -1,0 +1,15 @@
+services:
+  aureus-dryrun:
+    build:
+      context: ..
+      dockerfile: scripts/Dockerfile
+    image: aureus-freqtrade
+    container_name: aureus-dryrun
+    restart: unless-stopped
+    volumes:
+      - ../user_data:/freqtrade/user_data
+    command: >
+      trade
+      --config /freqtrade/user_data/config/config.common.json
+      --config /freqtrade/user_data/config/config.dryrun.json
+      --strategy AureusStrategy
