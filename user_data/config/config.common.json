@@ -1,0 +1,69 @@
+{
+    "strategy": "AureusStrategy",
+    "max_open_trades": 1,
+    "stake_currency": "USDT",
+    "stake_amount": "unlimited",
+    "tradable_balance_ratio": 0.99,
+    "timeframe": "5m",
+    "trading_mode": "futures",
+    "margin_mode": "isolated",
+    "exchange": {
+        "name": "okx",
+        "key": "",
+        "secret": "",
+        "password": "",
+        "ccxt_config": {},
+        "ccxt_async_config": {},
+        "pair_whitelist": [
+            "BTC/USDT:USDT",
+            "ETH/USDT:USDT"
+        ],
+        "pair_blacklist": []
+    },
+    "pairlists": [
+        {"method": "StaticPairList"}
+    ],
+    "entry_pricing": {
+        "price_side": "same",
+        "use_order_book": true,
+        "order_book_top": 1,
+        "price_last_balance": 0.0,
+        "check_depth_of_market": {
+            "enabled": false,
+            "bids_to_ask_delta": 1
+        }
+    },
+    "exit_pricing": {
+        "price_side": "same",
+        "use_order_book": true,
+        "order_book_top": 1
+    },
+    "order_types": {
+        "entry": "limit",
+        "exit": "limit",
+        "stoploss": "market",
+        "stoploss_on_exchange": false
+    },
+    "unfilledtimeout": {
+        "entry": 10,
+        "exit": 5,
+        "unit": "minutes"
+    },
+    "telegram": {
+        "enabled": false
+    },
+    "api_server": {
+        "enabled": false
+    },
+    "internals": {
+        "process_throttle_secs": 5
+    },
+    "aureus": {
+        "risk_per_trade": "0.01",
+        "max_leverage": "5",
+        "daily_max_loss_r": "2",
+        "daily_max_drawdown": "0.03",
+        "cooldown_candles": 6,
+        "unknown_funding_policy": "neutral"
+    }
+}

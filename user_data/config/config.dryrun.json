@@ -1,0 +1,6 @@
+{
+    "dry_run": true,
+    "dry_run_wallet": 1000,
+    "db_url": "sqlite:///user_data/tradesv3.dryrun.sqlite",
+    "cancel_open_orders_on_exit": true
+}

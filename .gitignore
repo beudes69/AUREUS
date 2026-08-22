@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+.pytest_cache/
+.ruff_cache/
+.hypothesis/
+.mypy_cache/
+
+# Secrets — ne jamais committer
+.env
+
+# Artefacts Freqtrade / AUREUS (générés au runtime)
+user_data/data/
+user_data/logs/
+user_data/backtest_results/
+user_data/plot/
+user_data/hyperopt_results/
+user_data/notebooks/
+user_data/aureus_state.json
+user_data/aureus_state.json.corrupt-*
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.log
