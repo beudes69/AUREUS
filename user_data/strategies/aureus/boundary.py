@@ -97,7 +97,7 @@ def ceil_to_step(value: Decimal, step: Decimal) -> Decimal:
 # ---------------------------------------------------------------------------
 
 def notional(price: Decimal, amount: Decimal) -> Decimal:
-    """Notionnel = prix × quantité (base currency)."""
+    """Notionnel = prix * quantité (base currency)."""
     if price <= 0:
         raise BoundaryError(f"notional: prix invalide ({price!r})")
     if amount < 0:

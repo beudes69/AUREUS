@@ -3,7 +3,6 @@
 from decimal import Decimal
 
 import pytest
-
 from aureus.config_schema import AureusConfig, ConfigError, validate_config
 
 

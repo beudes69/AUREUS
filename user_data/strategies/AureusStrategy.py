@@ -9,14 +9,13 @@ JAMAIS de signal d'entrée. Triple verrou anti-trade :
 """
 
 from pathlib import Path
-
-from pandas import DataFrame
-
-from freqtrade.strategy import IStrategy
+from typing import ClassVar
 
 from aureus.config_schema import validate_config
 from aureus.diagnostics import DiagnosticsWriter, Event
 from aureus.state import StateStore
+from freqtrade.strategy import IStrategy
+from pandas import DataFrame
 
 
 class AureusStrategy(IStrategy):
@@ -29,7 +28,7 @@ class AureusStrategy(IStrategy):
 
     # Aucune sortie par ROI ; stoploss très large, jamais atteint (aucun trade
     # possible à l'étape 1) — le vrai stop viendra de l'EntryPlan.
-    minimal_roi: dict = {}
+    minimal_roi: ClassVar[dict] = {}
     stoploss = -0.99
     use_exit_signal = True
 

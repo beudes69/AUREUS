@@ -3,9 +3,6 @@
 from decimal import Decimal
 
 import pytest
-from hypothesis import given
-from hypothesis import strategies as st
-
 from aureus.boundary import (
     BoundaryError,
     ceil_to_step,
@@ -17,6 +14,8 @@ from aureus.boundary import (
     to_decimal,
     to_float,
 )
+from hypothesis import given
+from hypothesis import strategies as st
 
 # ---------------------------------------------------------------------------
 # to_decimal / to_float

@@ -59,7 +59,10 @@ def test_secrets_are_redacted(tmp_path):
         payload={
             "api_key": "AKIA-visible",
             "exchange": {"secret": "s3cret", "password": "p4ss", "name": "okx"},
+            # Clé évoquant un secret : la valeur ENTIÈRE est caviardée.
             "tokens": [{"access_token": "tok"}],
+            # Clé anodine : récursion dans la liste, seule la clé secrète est caviardée.
+            "items": [{"access_token": "tok2", "note": "ok"}],
             "risk_per_trade": "0.01",
         },
     )
@@ -68,12 +71,14 @@ def test_secrets_are_redacted(tmp_path):
     assert payload["exchange"]["secret"] == REDACTED
     assert payload["exchange"]["password"] == REDACTED
     assert payload["exchange"]["name"] == "okx"
-    assert payload["tokens"][0]["access_token"] == REDACTED
+    assert payload["tokens"] == REDACTED
+    assert payload["items"][0]["access_token"] == REDACTED
+    assert payload["items"][0]["note"] == "ok"
     assert payload["risk_per_trade"] == "0.01"
 
     # Aucun secret nulle part dans le fichier brut.
     raw = writer.path.read_text(encoding="utf-8")
-    for secret in ("AKIA-visible", "s3cret", "p4ss", "tok"):
+    for secret in ("AKIA-visible", "s3cret", "p4ss", "tok2", '"tok"'):
         assert secret not in raw
 
 

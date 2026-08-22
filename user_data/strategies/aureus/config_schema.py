@@ -93,7 +93,9 @@ def validate_config(config: Mapping[str, Any]) -> AureusConfig:
     # ---- Section aureus : clés connues + défauts -------------------------------------
     section_raw = config.get(CONFIG_SECTION, {})
     if not isinstance(section_raw, Mapping):
-        errors.append(f"{CONFIG_SECTION}: doit être un objet JSON, reçu {type(section_raw).__name__!r}")
+        errors.append(
+            f"{CONFIG_SECTION}: doit être un objet JSON, reçu {type(section_raw).__name__!r}"
+        )
         section_raw = {}
     unknown_keys = sorted(set(section_raw) - set(_DEFAULTS))
     if unknown_keys:
